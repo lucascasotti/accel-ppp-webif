@@ -1,7 +1,10 @@
 <?php
-// Default secret for password test
-$secret='$6$rounds=10000$YO2pGg47XU$AUgMTnkoPxJdvugNa7L78mYEymYmAJKFckoV/D8e3aqiiodAgYDi/DEE/dL4DLBHMn2NelH5IuhQ/sFb4NEsi1';
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
+
+// Default secret for password test
+$secret=$_ENV['SECRET'];
 
 function rndstr()
 {
@@ -30,7 +33,7 @@ if (isset($argv)) {
 	exit(0);
     }
     if ($argv[1] == "--password" && isset($argv[2])) {
-	echo "\$secret='".crypt(trim($argv[2]),'$6$rounds=10000$'.rndstr().'$')."';\n";
+	echo file_put_contents(__DIR__.'/.env', "SECRET=\"".crypt(trim($argv[2]),'$6$rounds=10000$'.rndstr().'$')."\"");
 	exit(0);
     }
     exit(0);
@@ -53,7 +56,7 @@ function checkauth() {
 }
 
 function runcmd ($cmd) {
-	$arr = array();
+	$arr = [];
 	$f = popen($cmd, "r");
 	if ($f) {
 		while(!feof($f)) {
@@ -61,6 +64,7 @@ function runcmd ($cmd) {
 		}
 		pclose($f);
 	}
+
 	return($arr);
 }
 
@@ -119,14 +123,14 @@ switch($_POST{'action'}) {
 
 	case 'killsoft':
 		checkauth();
-		$arr = runcmd('accel-cmd terminate if '.escapeshellcmd(trim($_POST{'interface'}))." soft");
+		$arr = runcmd('accel-cmd terminate if '. escapeshellcmd(trim($_POST{'selInterface'})) . ' soft');
 		echo json_encode($arr);
 		break;
 
 	case 'killhard':
 		checkauth();
-		$arr = runcmd('accel-cmd terminate if '.escapeshellcmd(trim($_POST{'interface'}))." hard");
-		echo json_encode($arr);
+		$arr = runcmd('accel-cmd terminate if ' . escapeshellcmd(trim($_POST{'selInterface'})) . ' hard');
+		echo  json_encode($arr);
 		break;
 
 	case 'ifstat':
