@@ -62,7 +62,7 @@ $dotenv->safeLoad();
 			var oldtab = "tabmail";
 			var table = null;
 			var chart; // global
-			var chart_interface = <?php echo $_ENV['ETHERNET']; ?>; // TODO: change this ugly global variable?
+			var chart_interface = '<?php echo $_ENV['ETHERNET']; ?>'; // TODO: change this ugly global variable?
 
 			function requestData() {
 				$.ajax({
