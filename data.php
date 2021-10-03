@@ -29,12 +29,14 @@ function semi_hash_equals ($str1, $str2) {
 // Detect CLI mode
 if (isset($argv)) {
     if (!isset($argv[1])) {
-	echo("--password xxx     : encrypt password\n");
-	exit(0);
+		echo("--password xxx     : encrypt password\n");
+		exit(0);
     }
     if ($argv[1] == "--password" && isset($argv[2])) {
-	echo file_put_contents(__DIR__.'/.env', "SECRET=\"".crypt(trim($argv[2]),'$6$rounds=10000$'.rndstr().'$')."\"");
-	exit(0);
+		$fp = fopen('.env', 'w+');
+		fwrite($fp, "SECRET=\"".crypt(trim($argv[2]),'$6$rounds=10000$'.rndstr().'$')."\"");
+		fclose($fp);
+		exit(0);
     }
     exit(0);
 }
