@@ -63,7 +63,8 @@ $dotenv->safeLoad();
 			var oldtab = "tabmail";
 			var table = null;
 			var chart; // global
-			var chart_interface = '<?php echo $_ENV['ETHERNET']; ?>'; // TODO: change this ugly global variable?
+			var chart_interface; // TODO: change this ugly global variable?
+			var default_interface = '<?php echo $_ENV['ETHERNET']; ?>';
 
 			function requestData() {
 				$.ajax({
@@ -101,8 +102,9 @@ $dotenv->safeLoad();
 
 			function showchartWithouPopup() {
 
-				chart = new Highcharts.Chart({
+				chart_interface = default_interface;
 
+				chart = new Highcharts.Chart({
 					chart: {
 						renderTo: 'ifchartmain',
 						defaultSeriesType: 'spline',
