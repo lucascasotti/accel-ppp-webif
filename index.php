@@ -98,6 +98,43 @@ $dotenv->safeLoad();
 				});
 			}
 
+			function showchartWithouPopup() {
+
+				chart = new Highcharts.Chart({
+
+					chart: {
+						renderTo: 'ifchart',
+						defaultSeriesType: 'spline',
+						events: {
+							load: requestData
+						}
+					},
+					title: {
+						text: 'Interface statistics'
+					},
+					xAxis: {
+						type: 'datetime',
+						tickPixelInterval: 150,
+						maxZoom: 20 * 1000
+					},
+					yAxis: {
+						minPadding: 0.2,
+						maxPadding: 0.2,
+						title: {
+							text: 'Bps',
+							margin: 80
+						}
+					},
+					series: [{
+						name: 'TX Speed',
+						data: []
+					}, {
+						name: 'RX Speed',
+						data: []
+					}]
+				});
+			}
+
 			function showchart() {
 				var winW = $(window).width() - 180;
 				var winH = $(window).height() - 180;
@@ -180,6 +217,7 @@ $dotenv->safeLoad();
 			}
 
 			function loadmain() {
+				showchartWithouPopup();
 				$.post("data.php", {
 					action: "stat"
 				}, function(ret) {
