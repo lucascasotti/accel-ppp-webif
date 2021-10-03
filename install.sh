@@ -22,7 +22,7 @@ sudo git clone https://github.com/lucascasotti/accel-ppp-webif.git /var/www/html
 sudo chown -R www-data:www-data /var/www/html/
 sudo su www-data -s /bin/bash -c "COMPOSER=/var/www/html/composer.json composer --working-dir=/var/www/html/ install"
 sudo su www-data -s /bin/bash -c "/usr/bin/php /var/www/html/data.php --password $1"
-sudo echo "ETHERNET=$(sudo ifconfig | cut -d " " -f1 | cut -d ":" -f1 | awk 'NR==1{print $1}')" >> /var/www/html/eth_interface.cache
-sudo chown -R www-data:www-data /var/www/html/eth_interface.cache
-sudo su www-data -s /bin/bash -c "cat /var/www/html/eth_interface.cache >> /var/www/html/.env"
-sudo rm /var/www/html/eth_interface.cache
+sudo echo "ETHERNET=$(sudo ifconfig | cut -d " " -f1 | cut -d ":" -f1 | awk 'NR==1{print $1}')" >> /var/www/eth_interface.cache
+sudo chown -R www-data:www-data /var/www/eth_interface.cache
+sudo su www-data -s /bin/bash -c "cat /var/www/eth_interface.cache >> /var/www/html/.env"
+sudo rm /var/www/eth_interface.cache
