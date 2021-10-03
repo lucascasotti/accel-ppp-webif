@@ -218,8 +218,6 @@ $dotenv->safeLoad();
 			}
 
 			function loadmain() {
-				chart_interface = default_interface;
-				showchartWithouPopup();
 				$.post("data.php", {
 					action: "stat"
 				}, function(ret) {
@@ -253,6 +251,8 @@ $dotenv->safeLoad();
 					$("#tabusers").html('');
 				}
 				if (tabname == "tabmain") {
+					chart_interface = default_interface;
+					showchartWithouPopup();
 					loadmain();
 				}
 				if (tabname == "tabusers") {
