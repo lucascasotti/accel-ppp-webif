@@ -102,8 +102,6 @@ $dotenv->safeLoad();
 
 			function showchartWithouPopup() {
 
-				chart_interface = default_interface;
-
 				chart = new Highcharts.Chart({
 					chart: {
 						renderTo: 'ifchartmain',
@@ -220,6 +218,7 @@ $dotenv->safeLoad();
 			}
 
 			function loadmain() {
+				chart_interface = default_interface;
 				showchartWithouPopup();
 				$.post("data.php", {
 					action: "stat"
