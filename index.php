@@ -349,6 +349,9 @@ $dotenv->safeLoad();
 				if (data.authenticated == 1) {
 					// We are already authenticated
 					showmainscreen();
+					chart_interface = default_interface;
+					showchartWithouPopup();
+					loadmain();
 				} else {
 					if (data.login) {
 						$("#login").val(data.login);
