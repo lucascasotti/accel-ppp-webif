@@ -51,6 +51,7 @@ $dotenv->safeLoad();
 			<div id="tabmain">
 				<input type=button id="autorefresh" value="Autorefresh: OFF">
 				<pre></pre>
+				<div id="ifchartmain"></div>
 			</div>
 			<div id="tabusers"></div>
 			<div id="tablogout"></div>
@@ -103,7 +104,7 @@ $dotenv->safeLoad();
 				chart = new Highcharts.Chart({
 
 					chart: {
-						renderTo: 'ifchart',
+						renderTo: 'ifchartmain',
 						defaultSeriesType: 'spline',
 						events: {
 							load: requestData
