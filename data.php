@@ -35,7 +35,7 @@ if (isset($argv)) {
     }
     if ($argv[1] == "--password" && isset($argv[2])) {
 		$fp = fopen(__DIR__.'/.env', 'w+');
-		fwrite($fp, "SECRET=\"".crypt(trim($argv[2]),'$6$rounds=10000$'.rndstr().'$')."\"");
+		fwrite($fp, "SECRET=\"".crypt(trim($argv[2]),'$6$rounds=10000$'.rndstr().'$')."\n\r\"");
 		fclose($fp);
 		exit(0);
     }
