@@ -9,7 +9,7 @@ $dotenv->safeLoad();
 		<title>Monitoramento ACCEL</title>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/cupertino/jquery-ui.css">
 		<link rel="stylesheet" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css">
-		<link href="//medialize.github.io/jQuery-contextMenu/src/jquery.contextMenu.css" rel="stylesheet" type="text/css" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css" rel="stylesheet" type="text/css" />
 		<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script src="//code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 		<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
