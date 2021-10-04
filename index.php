@@ -120,7 +120,7 @@ $dotenv->safeLoad();
 						}
 					},
 					title: {
-						text: 'Interface statistics'
+						text: 'uplink statics'
 					},
 					xAxis: {
 						type: 'datetime',
