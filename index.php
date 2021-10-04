@@ -231,10 +231,12 @@ $dotenv->safeLoad();
 			function activator(event, ui) {
 				var tabname = ui.newPanel.attr('id');
 
-				delete requestData.txbytes;
-				delete requestData.rxbytes;
-				chart.destroy();
-				chart = null;
+				if(typeof x !== 'undefined') {
+					delete requestData.txbytes;
+					delete requestData.rxbytes;
+					chart.destroy();
+					chart = null;
+				}				
 
 				console.log('Activating tab ' + tabname);
 				if (tabname == "tablogout") {
