@@ -56,7 +56,7 @@ $dotenv->safeLoad();
 			</div>
 			<div id="tabusers"></div>
 			<div id="tablog">
-				<input type=button id="autorefresh" value="Autorefresh: OFF">
+				<input type=button id="autorefreshlog" value="Autorefresh: OFF">
 				<pre></pre>
 			</div>
 			<div id="tablogout"></div>
@@ -346,6 +346,18 @@ $dotenv->safeLoad();
 						setTimeout(loadmain, 1000);
 					} else {
 						$("#autorefresh").prop('value', 'Autorefresh: OFF');
+						autorefresh = 0;
+					}
+				});
+
+				$("#autorefreshlog").button().click(function(ev) {
+					ev.preventDefault();
+					if (autorefresh == 0) {
+						$("#autorefreshlog").prop('value', 'Autorefresh: ON');
+						autorefresh = 1;
+						setTimeout(loadlogs, 1000);
+					} else {
+						$("#autorefreshlog").prop('value', 'Autorefresh: OFF');
 						autorefresh = 0;
 					}
 				});
