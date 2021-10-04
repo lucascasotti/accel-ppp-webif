@@ -58,7 +58,7 @@ $dotenv->safeLoad();
 			<div id="tabusers"></div>
 			<div id="tablog">
 				<input type=button id="autorefreshlog" value="Autorefresh: OFF">
-				<textarea readonly></textarea>
+				<textarea readonly id="textareatablog"></textarea>
 			</div>
 			<div id="tablogout"></div>
 		</div>
@@ -332,6 +332,8 @@ $dotenv->safeLoad();
 				}
 				if (tabname == "tablog") {
 					loadlogs();
+					var textarea = document.getElementById('textareatablog');
+					textarea.scrollTop = textarea.scrollHeight;
 				}
 			}
 
