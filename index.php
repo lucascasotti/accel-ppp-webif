@@ -243,7 +243,9 @@ $dotenv->safeLoad();
 				$.post("data.php", {
 					action: "getlog"
 				}, function(ret) {
-					$("#tablog textarea").val(ret.output);
+					$("#textareatablog").val(ret.output);
+					var textarea = document.getElementById('textareatablog');
+					textarea.scrollTop = textarea.scrollHeight;
 				});
 				if (autorefreshlog == 1) {
 					setTimeout(loadlogs, 1000);
@@ -332,8 +334,6 @@ $dotenv->safeLoad();
 				}
 				if (tabname == "tablog") {
 					loadlogs();
-					var textarea = document.getElementById('textareatablog');
-					textarea.scrollTop = textarea.scrollHeight;
 				}
 			}
 
