@@ -242,7 +242,7 @@ $dotenv->safeLoad();
 				$.post("data.php", {
 					action: "getlog"
 				}, function(ret) {
-					$("#tablog textearea").val(ret.output);
+					$("#tablog textarea").val(ret.output);
 				});
 				if (autorefresh == 1) {
 					setTimeout(loadlogs, 1000);
