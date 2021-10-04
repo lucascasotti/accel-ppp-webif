@@ -17,7 +17,7 @@ $dotenv->safeLoad();
 		<script src="http://code.highcharts.com/highcharts-more.js"></script>
 		<style type="text/css">
 			body {
-				font-size: 14px;
+				font-size: 10px;
 			}
 		</style>
 	</head>
