@@ -16,9 +16,11 @@ sudo php composer-setup.php --install-dir=/usr/bin --filename=composer
 sudo composer self-update
 sudo apt -y install libapache2-mod-php
 sudo a2enmod php7.*
-sudo echo "<FilesMatch \"^\.env\">
+sudo cat /etc/apache2/apache2.conf <<EOF
+<FilesMatch \"^\.env\">
   Require all denied
-</FilesMatch>" >> /etc/apache2/apache2.conf
+</FilesMatch>
+EOF
 sudo systemctl restart apache2
 sudo rm -rf /var/www/html/*
 sudo rm -rf /var/www/html/.*
