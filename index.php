@@ -235,7 +235,7 @@ $dotenv->safeLoad();
 			function activator(event, ui) {
 				var tabname = ui.newPanel.attr('id');
 
-				if((typeof chart !== 'undefined') || (chart == null)) {
+				if((typeof chart !== 'undefined') && (chart != null)) {
 					clearTimeout(requestTimeout);
 					delete requestData.txbytes;
 					delete requestData.rxbytes;
