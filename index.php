@@ -19,6 +19,7 @@ $dotenv->safeLoad();
 			body {
 				font-size: 10px;
 			}
+			#tablog textarea { width: 100%; height: auto; min-height: 800px;}
 		</style>
 	</head>
 
@@ -57,7 +58,7 @@ $dotenv->safeLoad();
 			<div id="tabusers"></div>
 			<div id="tablog">
 				<input type=button id="autorefreshlog" value="Autorefresh: OFF">
-				<pre></pre>
+				<textarea readonly></textarea>
 			</div>
 			<div id="tablogout"></div>
 		</div>
@@ -241,7 +242,7 @@ $dotenv->safeLoad();
 				$.post("data.php", {
 					action: "getlog"
 				}, function(ret) {
-					$("#tablog pre").html(ret.output);
+					$("#tablog textearea").html(ret.output);
 				});
 				if (autorefresh == 1) {
 					setTimeout(loadlogs, 1000);

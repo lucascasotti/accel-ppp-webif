@@ -149,7 +149,7 @@ switch($_POST{'action'}) {
 
 	case 'getlog':
 		checkauth();
-		$arr = runcmd('tail -n 70 /var/log/accel-ppp/accel-ppp.log');
+		$arr = runcmd('tail -n 150 /var/log/accel-ppp/accel-ppp.log');
 		echo json_encode($arr);
 		break;
 
