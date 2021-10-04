@@ -16,6 +16,7 @@ sudo php composer-setup.php --install-dir=/usr/bin --filename=composer
 sudo composer self-update
 sudo apt -y install libapache2-mod-php
 sudo a2enmod php7.*
+sudo touch /etc/apache2/conf-available/disable-env.conf
 sudo cat /etc/apache2/conf-available/disable-env.conf <<EOF
 <FilesMatch "^\.env">
   Require all denied
