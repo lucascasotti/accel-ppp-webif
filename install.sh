@@ -16,11 +16,12 @@ sudo php composer-setup.php --install-dir=/usr/bin --filename=composer
 sudo composer self-update
 sudo apt -y install libapache2-mod-php
 sudo a2enmod php7.*
-sudo "<FilesMatch \"^\.env\">
+sudo echo "<FilesMatch \"^\.env\">
   Require all denied
 </FilesMatch>" >> /etc/apache2/apache2.conf
 sudo systemctl restart apache2
 sudo rm -rf /var/www/html/*
+sudo rm -rf /var/www/html/.*
 sudo git clone https://github.com/lucascasotti/accel-ppp-webif.git /var/www/html
 sudo chown -R www-data:www-data /var/www/html/
 sudo su www-data -s /bin/bash -c "COMPOSER=/var/www/html/composer.json composer --working-dir=/var/www/html/ install"
