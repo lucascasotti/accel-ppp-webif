@@ -18,6 +18,7 @@ sudo apt -y install libapache2-mod-php
 sudo a2enmod php7.*
 sudo rm -rf /etc/apache2/conf-available/disable-env.conf
 sudo touch /etc/apache2/conf-available/disable-env.conf
+sudo chmod 777 /etc/apache2/conf-available/disable-env.conf
 sudo echo "<Directory /var/www/html>
   # Disable Directory listing
   Options -Indexes
@@ -34,6 +35,7 @@ sudo echo "<Directory /var/www/html>
       Deny from all
   </Files>
 </Directory>" >> /etc/apache2/conf-available/disable-env.conf
+sudo chmod 644 /etc/apache2/conf-available/disable-env.conf
 sudo a2enconf disable-env.conf 
 sudo systemctl restart apache2
 sudo rm -rf /var/www/html/*
