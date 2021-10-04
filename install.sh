@@ -16,11 +16,17 @@ sudo php composer-setup.php --install-dir=/usr/bin --filename=composer
 sudo composer self-update
 sudo apt -y install libapache2-mod-php
 sudo a2enmod php7.*
+sudo rm -rf /etc/apache2/conf-available/disable-env.conf
 sudo touch /etc/apache2/conf-available/disable-env.conf
 sudo cat /etc/apache2/conf-available/disable-env.conf <<EOF
-<FilesMatch "^\.env">
-  Require all denied
-</FilesMatch>
+# Disable Directory listing
+Options -Indexes
+
+# block files which needs to be hidden, specify .example extension of the file
+<Files ~ "\.(env|json|config.js|md|gitignore|gitattributes|lock)$">
+    Order allow,deny
+    Deny from all
+</Files>
 EOF
 sudo a2enconf disable-env.conf 
 sudo systemctl restart apache2
