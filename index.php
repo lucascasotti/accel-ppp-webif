@@ -329,7 +329,7 @@ $dotenv->safeLoad();
 					});
 				}
 				if (tabname == "tablog") {
-					loglogs();
+					loadlogs();
 				}
 			}
 
