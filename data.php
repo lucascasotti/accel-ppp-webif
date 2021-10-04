@@ -147,6 +147,12 @@ switch($_POST{'action'}) {
 		echo json_encode($arr);
 		break;
 
+	case 'getlog':
+		checkauth();
+		$arr = runcmd('tail -n 100 /var/log/accel-ppp/accel-ppp.log');
+		echo json_encode($arr);
+		break;
+
 
 	default:
 		$arr{'status'} = "unknown command";

@@ -46,6 +46,7 @@ $dotenv->safeLoad();
 			<ul>
 				<li><a href="#tabmain">Main</a></li>
 				<li><a href="#tabusers">Users</a></li>
+				<li><a href="#tablog">Logs</a></li>
 				<li><a href="#tablogout">Logout</a></li>
 			</ul>
 			<div id="tabmain">
@@ -54,6 +55,10 @@ $dotenv->safeLoad();
 				<div id="ifchartmain"></div>
 			</div>
 			<div id="tabusers"></div>
+			<div id="tablog">
+				<input type=button id="autorefresh" value="Autorefresh: OFF">
+				<pre></pre>
+			</div>
 			<div id="tablogout"></div>
 		</div>
 		<!-- MAIN SCREEN EOF -->
@@ -232,6 +237,17 @@ $dotenv->safeLoad();
 				}
 			}
 
+			function loadlogs() {
+				$.post("data.php", {
+					action: "getlog"
+				}, function(ret) {
+					$("#tablog pre").html(ret.output);
+				});
+				if (autorefresh == 1) {
+					setTimeout(loadlogs, 1000);
+				}
+			}
+
 			function activator(event, ui) {
 				var tabname = ui.newPanel.attr('id');
 
@@ -311,6 +327,9 @@ $dotenv->safeLoad();
 						// Get user detailed info
 						$("#loadingdialog").dialog('close');
 					});
+				}
+				if (tabname == "tablog") {
+					loglogs();
 				}
 			}
 
