@@ -65,6 +65,7 @@ $dotenv->safeLoad();
 			var chart; // global
 			var chart_interface; // TODO: change this ugly global variable?
 			var default_interface = '<?php echo $_ENV['ETHERNET']; ?>';
+			var requestTimeout;
 
 			function requestData() {
 				$.ajax({
@@ -94,7 +95,7 @@ $dotenv->safeLoad();
 						requestData.rxbytes = point.rxbytes;
 
 						// call it again after one second
-						setTimeout(requestData, 1000);
+						requestTimeout = setTimeout(requestData, 1000);
 					},
 					cache: false
 				});
@@ -149,6 +150,7 @@ $dotenv->safeLoad();
 					close: function(event, ui) {
 						delete requestData.txbytes;
 						delete requestData.rxbytes;
+						clearTimeout(requestTimeout);
 						chart.destroy();
 						chart = null;
 					}
@@ -234,6 +236,7 @@ $dotenv->safeLoad();
 				var tabname = ui.newPanel.attr('id');
 
 				if(typeof x !== 'undefined') {
+					clearTimeout(requestTimeout);
 					delete requestData.txbytes;
 					delete requestData.rxbytes;
 					chart.destroy();
