@@ -66,6 +66,7 @@ $dotenv->safeLoad();
 
 		<script>
 			var autorefresh = 0;
+			var autorefreshlog = 0;
 			var oldtab = "tabmail";
 			var table = null;
 			var chart; // global
@@ -244,7 +245,7 @@ $dotenv->safeLoad();
 				}, function(ret) {
 					$("#tablog textarea").val(ret.output);
 				});
-				if (autorefresh == 1) {
+				if (autorefreshlog == 1) {
 					setTimeout(loadlogs, 1000);
 				}
 			}
@@ -353,13 +354,13 @@ $dotenv->safeLoad();
 
 				$("#autorefreshlog").button().click(function(ev) {
 					ev.preventDefault();
-					if (autorefresh == 0) {
+					if (autorefreshlog == 0) {
 						$("#autorefreshlog").prop('value', 'Autorefresh: ON');
-						autorefresh = 1;
+						autorefreshlog = 1;
 						setTimeout(loadlogs, 1000);
 					} else {
 						$("#autorefreshlog").prop('value', 'Autorefresh: OFF');
-						autorefresh = 0;
+						autorefreshlog = 0;
 					}
 				});
 			}
