@@ -18,24 +18,22 @@ sudo apt -y install libapache2-mod-php
 sudo a2enmod php7.*
 sudo rm -rf /etc/apache2/conf-available/disable-env.conf
 sudo touch /etc/apache2/conf-available/disable-env.conf
-sudo cat /etc/apache2/conf-available/disable-env.conf <<EOF
-<Directory /var/www/html>
+sudo echo "<Directory /var/www/html>
   # Disable Directory listing
   Options -Indexes
 
   # block files which needs to be hidden // in here specify .example extension of the file
-  <Files ~ "\.(env|json|config.js|md|gitignore|gitattributes|lock)$">
+  <Files ~ \"\.(env|json|config.js|md|gitignore|gitattributes|lock)$\">
       Order allow,deny
       Deny from all
   </Files>
 
   # in here specify full file name sperator '|'
-  <Files ~ "(artisan)$">
+  <Files ~ \"(artisan)$\">
       Order allow,deny
       Deny from all
   </Files>
-</Directory>
-EOF
+</Directory>" >> /etc/apache2/conf-available/disable-env.conf
 sudo a2enconf disable-env.conf 
 sudo systemctl restart apache2
 sudo rm -rf /var/www/html/*
