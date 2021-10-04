@@ -102,6 +102,8 @@ $dotenv->safeLoad();
 
 			function showchartWithouPopup() {
 
+				$("#ifchartmain").html("");
+
 				chart = new Highcharts.Chart({
 					chart: {
 						renderTo: 'ifchartmain',
